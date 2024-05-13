@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: first-app-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: first-app
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: first-app
+        tier: backend
+    spec:
+      containers:
+      - name: first-app
+        image: phambchungdev/first-app:1.4
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "0.2"
