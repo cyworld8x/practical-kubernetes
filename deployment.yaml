@@ -16,11 +16,14 @@ spec:
     spec:
       containers:
       - name: first-app
-        image: phambchungdev/first-app:1.4
+        image: phambchungdev/k8s-app:1.1
+        volumeMounts:
+          - name: data-log
+            mountPath: /app/data
         livenessProbe:
           httpGet:
             path: /
-            port: 8080
+            port: 2288
           initialDelaySeconds: 10
           periodSeconds: 5
         resources:
@@ -30,3 +33,6 @@ spec:
           requests:
             memory: 256Mi
             cpu: "0.2"
+      volumes:
+        - name: data-log
+          emptyDir: {}

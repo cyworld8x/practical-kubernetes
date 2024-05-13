@@ -1,0 +1,12 @@
+version: "3"
+name: k8sapp
+services:
+  first-app:
+    container_name: web
+    build: .
+    ports:
+      - "22881:2288"
+    volumes:
+      - data-log:/app/data
+volumes:
+  data-log:
