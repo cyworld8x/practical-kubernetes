@@ -16,7 +16,7 @@ app.get('/error', (req, res) => {
   process.exit(1);
 });
 
-const filePath = path.join(__dirname, 'data', 'log.txt');
+const filePath = path.join(__dirname, process.env.LOG_FOLDER, 'log.txt');
 
 app.use(bodyParser.json());
 

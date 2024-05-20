@@ -17,8 +17,15 @@ spec:
       containers:
       - name: first-app
         image: phambchungdev/k8s-app:1.1
+        env:
+          - name: LOG_FOLDER
+            # value : '/data'
+            valueFrom:
+              configMapKeyRef: 
+                name: store-environment
+                key: folder
         volumeMounts:
-          - name: data-log
+          - name: story-volume
             mountPath: /app/data
         livenessProbe:
           httpGet:
@@ -34,5 +41,6 @@ spec:
             memory: 256Mi
             cpu: "0.2"
       volumes:
-        - name: data-log
-          emptyDir: {}
+        - name: story-volume
+          persistentVolumeClaim:
+            claimName: host-pvc

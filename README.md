@@ -3,6 +3,7 @@ Install kubernetes
 	choco install kubernetes-cli
 	
 	kubectl version --client
+
 Enable Hyper-v:
 	
 	Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
@@ -27,10 +28,17 @@ Open dashvboard
 	
 	minikube dashboard
 
+To delete installed driver
+	
+	minikube delete
 
 To get pods
 	
 	kubectl get pods
+
+To delete a pod 
+
+	kubectl delete -n default pod [podname]
 	
 To create service
 	
@@ -44,7 +52,7 @@ To get services
 	
 	kubectl get services
 
-to expose a pods, type=NodePort, CLusterIP, LoadBalancer
+To expose a pods, type=NodePort, CLusterIP, LoadBalancer
 
 	kubectl expose deployment [deploymentname] --type=LoadBalancer --port 8080
 
@@ -88,4 +96,9 @@ To push image (need to login to docker boforehand)
 To build app from latest images
 
 	docker run -p 28281:2288 --name nodeapp  phambchungdev/k8s-app
+
+
+PersistentVolume (PV) is a piece of storage in the cluster that has been provisioned by an administrator. It is a resource in the cluster that has a lifecycle independent of any individual pod that uses the PV. PVs are volume plugins like Volumes, but have a lifecycle independent of any individual pod that uses the PV.
+
+PersistentVolumeClaim (PVC) is a request for and claim to a PersistentVolume resource. PVCs are used by users to request storage with a specific size, access mode, and StorageClass for the PersistentVolume. If a PersistentVolume that satisfies the request exists or can be provisioned, the PersistentVolumeClaim is bound to that PersistentVolume.
 
