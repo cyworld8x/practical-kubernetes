@@ -22,7 +22,7 @@ When it fails try to set default by
 
 Get status
 	
-	mini status
+	minikube status
 
 Open dashvboard
 	
@@ -72,9 +72,13 @@ How to delete Kubernetes deployments using its YAML configuration file, replace 
 
 	kubectl delete -f merged-deployment.yaml
 	
-To start see running port by service
+To see running port by service
 	
 	minikube service [deploymentname]
+
+To let kubectl pick a local port forward
+
+	kubectl port-forward [servicename] [LISTEN_PORT]:[DEST_PORT]
 
 To delete deployment by file
 	
