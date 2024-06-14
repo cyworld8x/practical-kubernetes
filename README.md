@@ -24,7 +24,7 @@ Get status
 	
 	minikube status
 
-Open dashvboard
+Open dashboard
 	
 	minikube dashboard
 
@@ -39,6 +39,11 @@ To get pods
 To delete a pod 
 
 	kubectl delete -n default pod [podname]
+
+To open service/pod outside cluster by using port-forward like
+
+	 kubectl port-forward user-app-deployement-6d878c8d66-f72tq 8080:8080
+	 kubectl port-forward service/user-app-service 8080:8080
 	
 To create service
 	
@@ -51,6 +56,10 @@ To get list deployments
 To get services
 	
 	kubectl get services
+
+To get logs of pod 
+
+	kubectl logs [pod name] 
 
 To expose a pods, type=NodePort, CLusterIP, LoadBalancer
 
