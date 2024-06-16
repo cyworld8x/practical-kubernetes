@@ -84,6 +84,11 @@ How to delete Kubernetes deployments using its YAML configuration file, replace 
 To see running port by service
 	
 	minikube service [deploymentname]
+	minikube service --url [servicename]
+
+To see list of services
+
+	minikube service list
 
 To let kubectl pick a local port forward
 
